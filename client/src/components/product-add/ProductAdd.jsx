@@ -1,8 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import * as productService from "../../services/productService";
+
 export default function ProductAdd() {
+    const navigate = useNavigate();
+
+    const addProductSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const productData = Object.fromEntries(new FormData(e.currentTarget));
+
+        try {
+            productService.add(productData);
+
+            navigate("products");
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <div className="productAdd">
             <h1>Add Product Page</h1>
-            <form>
+            <form onSubmit={addProductSubmitHandler}>
                 <div>
                     <label>Model Name:</label>
                     <input type="text" name="modelName" />
@@ -21,7 +40,7 @@ export default function ProductAdd() {
                 </div>
                 <div>
                     <label>Video Card:</label>
-                    <input type="text" name="weight" />
+                    <input type="text" name="videoCard" />
                 </div>
                 <div>
                     <label>RAM:</label>
