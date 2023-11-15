@@ -9,15 +9,21 @@ export default function Header() {
                 </Link>
             </h1>
             <nav className="navigation">
-                <Link to="/products">Products</Link>
-                <div className="user">
-                    <Link to="/products/create">Create Product</Link>
+                <li>
+                    <Link to="/products">All Products</Link>
+                </li>
+                <li>
+                    <Link to="/products/add">Add Product</Link>
+                </li>
+                <li>
                     <Link to="/logout">Logout</Link>
-                </div>
-                <div className="guest">
+                </li>
+                <li>
                     <Link to="/login">Login</Link>
+                </li>
+                <li>
                     <Link to="/register">Register</Link>
-                </div>
+                </li>
             </nav>
         </div>
     );

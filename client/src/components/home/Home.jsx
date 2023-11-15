@@ -1,3 +1,15 @@
+import CTA from "./CTA";
+import FeturedProducts from "./FeaturedProducts";
+import Hero from "./Hero";
+
 export default function Home() {
-    return <h1>Home Page</h1>;
+    return (
+        <div className="home">
+            <Hero />
+
+            <FeturedProducts />
+
+            <CTA />
+        </div>
+    );
 }
