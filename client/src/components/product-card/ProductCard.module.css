@@ -1,0 +1,32 @@
+.productCard {
+    max-width: 300px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.productCard img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.productCard h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.productCard p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.productCard .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 10px;
+}
