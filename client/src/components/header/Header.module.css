@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: var(--space-4) var(--space-6);
+}
+
+.header .navigation {
+    list-style-type: none;
+    display: flex;
+    gap: var(--space-4);
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    font-weight: bold;
+    text-decoration: none !important;
+}
