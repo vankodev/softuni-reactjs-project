@@ -11,12 +11,14 @@ export default function FeturedProducts() {
     }, []);
 
     return (
-        <div className="featuredProducts">
-            <h2>Featured Products</h2>
-            <div className={styles.featuredProductsList}>
-                {products.slice(0, 3).map((product) => (
-                    <ProductCard key={product._id} {...product} />
-                ))}
+        <div className="container">
+            <div className={styles.featuredProducts}>
+                <h2>Featured Products</h2>
+                <div className={styles.featuredProductsList}>
+                    {products.slice(0, 3).map((product) => (
+                        <ProductCard key={product._id} {...product} />
+                    ))}
+                </div>
             </div>
         </div>
     );

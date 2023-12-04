@@ -1,14 +1,16 @@
 .hero {
+    position: relative;
     height: 80vh;
-    padding: var(--space-4) 0;
-    padding-left: var(--space-8);
-    color: white;
     background-color: rgb(68, 84, 107);
     background-image: url("../../../public/images/hero-back2.png");
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
+}
+
+.heroInner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .heroInner > * + * {

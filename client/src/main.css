@@ -54,15 +54,23 @@ img {
 }
 
 .container {
-    padding: 0 var(--space-2);
-    max-width: 1000px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-4);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: var(--space-2);
+    }
 }
 
 body {
     font-family: var(--font-primary);
     font-size: var(--font-size-20);
     font-weight: var(--font-weight-400);
-    color: var(--color-primary);
+    color: white;
     background-color: var(--color-secondary);
     margin: 0;
     line-height: 1.5;
