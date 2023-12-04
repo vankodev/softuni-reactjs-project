@@ -54,9 +54,8 @@ img {
 }
 
 .container {
-    padding: 0 var(--spacer);
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0 var(--space-2);
+    max-width: 1000px;
 }
 
 body {
@@ -88,4 +87,22 @@ h3 {
     font-weight: var(--font-weight-400);
     font-size: var(--font-size-3);
     line-height: 1.2;
+}
+
+button {
+    cursor: pointer;
+    font-weight: var(--font-weight-700);
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-2);
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+button:active {
+    background-color: rgba(255, 255, 255, 0.5);
 }

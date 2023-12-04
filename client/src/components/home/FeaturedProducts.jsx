@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as productService from "../../services/productService";
 import ProductCard from "../product-card/ProductCard";
+import styles from "../home/FeaturedProducts.module.css";
 
 export default function FeturedProducts() {
     const [products, setProducts] = useState([]);
@@ -12,9 +13,11 @@ export default function FeturedProducts() {
     return (
         <div className="featuredProducts">
             <h2>Featured Products</h2>
-            {products.slice(0, 3).map((product) => (
-                <ProductCard key={product._id} {...product} />
-            ))}
+            <div className={styles.featuredProductsList}>
+                {products.slice(0, 3).map((product) => (
+                    <ProductCard key={product._id} {...product} />
+                ))}
+            </div>
         </div>
     );
 }
