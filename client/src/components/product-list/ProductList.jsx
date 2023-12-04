@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as productService from "../../services/productService";
 import ProductCard from "../product-card/ProductCard";
+import styles from "./ProductList.module.css";
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
@@ -10,12 +11,13 @@ export default function ProductList() {
     }, []);
 
     return (
-        <div className="productList">
+        <div className={styles.productList}>
             <h1>Product List Page</h1>
-
-            {products.map((product) => (
-                <ProductCard key={product._id} {...product} />
-            ))}
+            <div className={styles.products}>
+                {products.map((product) => (
+                    <ProductCard key={product._id} {...product} />
+                ))}
+            </div>
         </div>
     );
 }

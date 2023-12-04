@@ -1,5 +1,5 @@
 .productCard {
-    max-width: 300px;
+    width: 300px;
     border: 1px solid #ddd;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
@@ -9,8 +9,8 @@
 }
 
 .productCard img {
-    width: 200px;
-    height: auto;
+    width: initial;
+    height: 100px;
     margin-bottom: 15px;
 }
 

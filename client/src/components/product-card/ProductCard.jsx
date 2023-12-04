@@ -19,11 +19,11 @@ export default function ProductCard({
                 alt="laptop-image"
             />
             <h3>{modelName}</h3>
-            <p>Screen Size: {screenSize}</p>
-            <p>Processor: {processor}</p>
-            <p>RAM: {ram}</p>
-            <p>Video Card: {videoCard}</p>
-            <p>Storage: {storage}</p>
+            <p>{screenSize} Display</p>
+            <p>{processor}</p>
+            <p>{ram} RAM</p>
+            <p>{videoCard}</p>
+            <p>{storage}</p>
             <p className={styles.price}>${price}</p>
         </div>
     );
