@@ -3,7 +3,7 @@
     padding-bottom: var(--space-8);
 }
 
-.featuredProducts h2 {
+.featuredProducts > h2 {
     margin-bottom: var(--space-6);
 }
 

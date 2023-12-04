@@ -13,18 +13,18 @@ export default function ProductCard({
 }) {
     return (
         <div className={styles.productCard}>
-            <img
-                style={{ width: "200px" }}
-                src={pictureUrl}
-                alt="laptop-image"
-            />
+            <div className={styles.productImage}>
+                <img src={pictureUrl} alt="laptop-image" />
+            </div>
             <h3>{modelName}</h3>
-            <p>{screenSize} Display</p>
-            <p>{processor}</p>
-            <p>{ram} RAM</p>
-            <p>{videoCard}</p>
-            <p>{storage}</p>
-            <p className={styles.price}>${price}</p>
+            <div className={styles.specs}>
+                <p>{screenSize} Display</p>
+                <p>{processor}</p>
+                <p>{ram} RAM</p>
+                <p>{videoCard}</p>
+                <p>{storage}</p>
+            </div>
+            <h2 className={styles.price}>${price}</h2>
         </div>
     );
 }
