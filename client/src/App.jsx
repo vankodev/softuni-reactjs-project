@@ -19,13 +19,15 @@ function App() {
 
             {showBanner && <Banner />}
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<ProductList />} />
-                <Route path="/products/add" element={<ProductAdd />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-            </Routes>
+            <div className="content">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/products" element={<ProductList />} />
+                    <Route path="/products/add" element={<ProductAdd />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Routes>
+            </div>
 
             <Footer />
         </div>

@@ -59,6 +59,10 @@ img {
     padding: 0 var(--space-4);
 }
 
+.content {
+    min-height: calc(100vh - 300px);
+}
+
 @media (max-width: 768px) {
     .container {
         width: 100%;
