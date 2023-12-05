@@ -11,12 +11,14 @@ export default function ProductList() {
     }, []);
 
     return (
-        <div className={styles.productList}>
-            <h1>Product List Page</h1>
-            <div className={styles.products}>
-                {products.map((product) => (
-                    <ProductCard key={product._id} {...product} />
-                ))}
+        <div className="container">
+            <div className={styles.productList}>
+                <h1>Best Gaming Laptops</h1>
+                <div className={styles.products}>
+                    {products.map((product) => (
+                        <ProductCard key={product._id} {...product} />
+                    ))}
+                </div>
             </div>
         </div>
     );
