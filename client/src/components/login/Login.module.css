@@ -1,8 +1,8 @@
-.productAdd {
+.login {
     position: relative;
     max-width: 800px;
 }
 
-.productAdd .header {
+.login .header {
     margin-bottom: var(--space-6);
 }

@@ -23,7 +23,7 @@ export default function ProductAdd() {
         <div className="container">
             <div className={styles.productAdd}>
                 <h1 className={styles.header}>Add Product</h1>
-                <form onSubmit={addProductSubmitHandler}>
+                <form className="form" onSubmit={addProductSubmitHandler}>
                     <div>
                         <label>Model Name</label>
                         <input type="text" name="modelName" />

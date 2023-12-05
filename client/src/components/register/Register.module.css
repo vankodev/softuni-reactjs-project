@@ -1,8 +1,8 @@
-.productAdd {
+.register {
     position: relative;
     max-width: 800px;
 }
 
-.productAdd .header {
+.register .header {
     margin-bottom: var(--space-6);
 }
