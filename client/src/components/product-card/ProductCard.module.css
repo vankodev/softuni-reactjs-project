@@ -48,5 +48,5 @@
 .productCard .price {
     margin-top: auto;
     color: var(--color-accent);
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }

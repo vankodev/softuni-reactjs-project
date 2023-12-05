@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
 :root {
+    /* Spacing */
     --space-1: 0.5rem; /* 8px */
     --space-2: 0.75rem; /* 12px */
     --space-3: 1rem; /* 16px */
@@ -11,21 +12,28 @@
     --space-7: 4rem; /* 64px */
     --space-8: 6rem; /* 96px */
 
+    /* Colors */
     --color-primary: white;
     --color-secondary: #030303;
     --color-accent: #a4161a;
     --color-gray-light: #d3d3d3;
     --color-gray-dark: #708090;
 
+    /* Font Family */
     --font-primary: "Roboto", sans-serif;
     --font-secondary: "Roboto Condensed", sans-serif;
 
-    --font-size-1: 3rem; /* 48px */
-    --font-size-2: 2rem; /* 32px */
-    --font-size-3: 1.5rem; /* 24px */
+    /* Font Size */
+    --fs-1: 3rem; /* 48px */
+    --fs-2: 2rem; /* 32px */
+    --fs-3: 1.5rem; /* 24px */
+    --fs-4: 1.25rem; /* 20px */
+    --fs-5: 1rem; /* 16px */
+    --fs-6: 0.75rem; /* 12px */
 
-    --font-weight-700: 700;
-    --font-weight-400: 400;
+    /* Font Weight */
+    --fw-bold: 700;
+    --fw-regular: 400;
 }
 
 *,
@@ -57,6 +65,7 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-4);
+    /* border: 1px solid red; */
 }
 
 .content {
@@ -72,8 +81,8 @@ img {
 
 body {
     font-family: var(--font-primary);
-    font-size: var(--font-size-20);
-    font-weight: var(--font-weight-400);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-regular);
     color: var(--color-primary);
     background-color: var(--color-secondary);
     margin: 0;
@@ -82,28 +91,28 @@ body {
 
 h1 {
     font-family: var(--font-primary);
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-1);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-1);
     line-height: 1;
 }
 
 h2 {
     font-family: var(--font-primary);
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-2);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-2);
     line-height: 1.1;
 }
 
 h3 {
     font-family: var(--font-primary);
-    font-weight: var(--font-weight-400);
-    font-size: var(--font-size-3);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-3);
     line-height: 1.2;
 }
 
 button {
     cursor: pointer;
-    font-weight: var(--font-weight-700);
+    font-weight: var(--fw-bold);
     text-transform: uppercase;
     padding: var(--space-1) var(--space-2);
     border: 2px solid var(--color-primary);

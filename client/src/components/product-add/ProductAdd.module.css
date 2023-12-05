@@ -1,0 +1,39 @@
+.productAdd {
+    position: relative;
+    max-width: 800px;
+}
+
+.header {
+    margin-bottom: var(--space-6);
+}
+
+form > * {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+form label {
+    position: absolute;
+    padding: 0 var(--space-2);
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: var(--fs-6);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    background-color: var(--color-secondary);
+}
+
+form input[type="text"] {
+    width: 100%;
+    margin-bottom: var(--space-4);
+    padding: var(--space-3);
+    font-family: var(--font-primary);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+}
