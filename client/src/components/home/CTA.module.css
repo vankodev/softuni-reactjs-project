@@ -1,0 +1,13 @@
+.cta {
+    height: 200px;
+    background-image: url("../../../public/images/cta-back.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.ctaContent {
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

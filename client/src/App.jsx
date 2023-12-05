@@ -6,7 +6,7 @@ import ProductList from "./components/product-list/ProductList";
 import Login from "./components/login/login";
 import Register from "./components/register/Register";
 import ProductAdd from "./components/product-add/ProductAdd";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 
 function App() {
     return (
