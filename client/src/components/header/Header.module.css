@@ -19,14 +19,21 @@
 a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: red;
+}
+
+.active {
     text-decoration: underline;
 }
 
 .logo {
     font-weight: bold;
-    text-decoration: none !important;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--color-primary);
 }
