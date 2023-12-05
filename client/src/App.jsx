@@ -1,6 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/header/Header";
+import Banner from "./components/header/Banner";
 import Home from "./components/home/Home";
 import ProductList from "./components/product-list/ProductList";
 import Login from "./components/login/login";
@@ -9,9 +10,14 @@ import ProductAdd from "./components/product-add/ProductAdd";
 import Footer from "./components/footer/Footer";
 
 function App() {
+    const location = useLocation();
+    const showBanner = location.pathname !== "/";
+
     return (
         <div className="app">
             <Header />
+
+            {showBanner && <Banner />}
 
             <Routes>
                 <Route path="/" element={<Home />} />
