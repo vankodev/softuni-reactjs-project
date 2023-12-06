@@ -116,7 +116,7 @@ button {
     cursor: pointer;
     font-weight: var(--fw-bold);
     text-transform: uppercase;
-    padding: var(--space-1) var(--space-2);
+    padding: var(--space-3) var(--space-4);
     border: 2px solid var(--color-primary);
     color: var(--color-primary);
     background-color: transparent;

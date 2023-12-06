@@ -1,11 +1,10 @@
 .productList h1 {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
 }
 
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: var(--space-4);
-    padding: var(--space-4);
     justify-content: center;
 }
