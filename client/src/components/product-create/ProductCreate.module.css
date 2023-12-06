@@ -1,8 +1,8 @@
-.productAdd {
+.productCreate {
     position: relative;
     max-width: 800px;
 }
 
-.productAdd .header {
+.productCreate .header {
     margin-bottom: var(--space-6);
 }

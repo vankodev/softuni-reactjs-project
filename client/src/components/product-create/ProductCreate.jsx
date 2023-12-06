@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as productService from "../../services/productService";
-import styles from "./ProductAdd.module.css";
+import styles from "./ProductCreate.module.css";
 
 const formInitialState = {
     modelName: "",
@@ -14,7 +14,7 @@ const formInitialState = {
     price: "",
 };
 
-export default function ProductAdd() {
+export default function ProductCreate() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
 
@@ -33,7 +33,7 @@ export default function ProductAdd() {
         e.preventDefault();
 
         try {
-            productService.add(formValues);
+            productService.create(formValues);
 
             navigate("/products");
         } catch (err) {
@@ -45,8 +45,8 @@ export default function ProductAdd() {
 
     return (
         <div className="container">
-            <div className={styles.productAdd}>
-                <h1 className={styles.header}>Add Product</h1>
+            <div className={styles.productCreate}>
+                <h1 className={styles.header}>Create Product</h1>
                 <form className="form" onSubmit={submitHandler}>
                     <div>
                         <label htmlFor="modelName">Model Name</label>
@@ -128,7 +128,7 @@ export default function ProductAdd() {
                             onChange={changeHandler}
                         />
                     </div>
-                    <button type="submit">Add Product</button>
+                    <button type="submit">Create Product</button>
                 </form>
             </div>
         </div>

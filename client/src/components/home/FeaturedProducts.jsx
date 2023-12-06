@@ -7,7 +7,7 @@ export default function FeturedProducts() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        productService.get().then((result) => setProducts(result));
+        productService.getAll().then((result) => setProducts(result));
     }, []);
 
     return (

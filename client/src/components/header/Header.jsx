@@ -23,12 +23,12 @@ export default function Header() {
                 </li>
                 <li>
                     <Link
-                        to="/products/add"
+                        to="/products/create"
                         className={
-                            isActive("/products/add") ? styles.active : ""
+                            isActive("/products/create") ? styles.active : ""
                         }
                     >
-                        Add Product
+                        Create Product
                     </Link>
                 </li>
                 <li>

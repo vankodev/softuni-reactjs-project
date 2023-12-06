@@ -6,7 +6,7 @@ import Home from "./components/home/Home";
 import ProductList from "./components/product-list/ProductList";
 import Login from "./components/login/login";
 import Register from "./components/register/Register";
-import ProductAdd from "./components/product-add/ProductAdd";
+import ProductCreate from "./components/product-create/ProductCreate";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -23,7 +23,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/products" element={<ProductList />} />
-                    <Route path="/products/add" element={<ProductAdd />} />
+                    <Route
+                        path="/products/create"
+                        element={<ProductCreate />}
+                    />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Routes>
