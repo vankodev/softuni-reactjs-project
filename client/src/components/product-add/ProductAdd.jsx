@@ -1,60 +1,132 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as productService from "../../services/productService";
 import styles from "./ProductAdd.module.css";
 
+const formInitialState = {
+    modelName: "",
+    pictureUrl: "",
+    screenSize: "",
+    processor: "",
+    videoCard: "",
+    ram: "",
+    storage: "",
+    price: "",
+};
+
 export default function ProductAdd() {
     const navigate = useNavigate();
+    const [formValues, setFormValues] = useState(formInitialState);
 
-    const addProductSubmitHandler = (e) => {
+    const changeHandler = (e) => {
+        setFormValues((state) => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const resetFormHandler = () => {
+        setFormValues(formInitialState);
+    };
+
+    const submitHandler = (e) => {
         e.preventDefault();
 
-        const productData = Object.fromEntries(new FormData(e.currentTarget));
-
         try {
-            productService.add(productData);
+            productService.add(formValues);
 
-            navigate("products");
+            navigate("/products");
         } catch (err) {
             console.log(err);
         }
+
+        resetFormHandler();
     };
 
     return (
         <div className="container">
             <div className={styles.productAdd}>
                 <h1 className={styles.header}>Add Product</h1>
-                <form className="form" onSubmit={addProductSubmitHandler}>
+                <form className="form" onSubmit={submitHandler}>
                     <div>
-                        <label>Model Name</label>
-                        <input type="text" name="modelName" />
+                        <label htmlFor="modelName">Model Name</label>
+                        <input
+                            type="text"
+                            name="modelName"
+                            id="modelName"
+                            value={formValues.modelName}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Picture URL</label>
-                        <input type="text" name="pictureUrl" />
+                        <label htmlFor="pictureUrl">Picture URL</label>
+                        <input
+                            type="text"
+                            name="pictureUrl"
+                            id="pictureUrl"
+                            value={formValues.pictureUrl}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Screen Size</label>
-                        <input type="text" name="screenSize" />
+                        <label htmlFor="screenSize">Screen Size</label>
+                        <input
+                            type="text"
+                            name="screenSize"
+                            id="screenSize"
+                            value={formValues.screenSize}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Processor</label>
-                        <input type="text" name="processor" />
+                        <label htmlFor="processor">Processor</label>
+                        <input
+                            type="text"
+                            name="processor"
+                            id="processor"
+                            value={formValues.processor}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Video Card</label>
-                        <input type="text" name="videoCard" />
+                        <label htmlFor="videoCard">Video Card</label>
+                        <input
+                            type="text"
+                            name="videoCard"
+                            id="videoCard"
+                            value={formValues.videoCard}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>RAM</label>
-                        <input type="text" name="ram" />
+                        <label htmlFor="ram">RAM</label>
+                        <input
+                            type="text"
+                            name="ram"
+                            id="ram"
+                            value={formValues.ram}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Storage</label>
-                        <input type="text" name="storage" />
+                        <label htmlFor="storage">Storage</label>
+                        <input
+                            type="text"
+                            name="storage"
+                            id="storage"
+                            value={formValues.storage}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <div>
-                        <label>Price</label>
-                        <input type="text" name="price" />
+                        <label htmlFor="price">Price</label>
+                        <input
+                            type="text"
+                            name="price"
+                            id="price"
+                            value={formValues.price}
+                            onChange={changeHandler}
+                        />
                     </div>
                     <button type="submit">Add Product</button>
                 </form>
