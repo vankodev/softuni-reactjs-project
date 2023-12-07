@@ -17,16 +17,29 @@ const formInitialState = {
 export default function ProductCreate() {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
+    const [errors, setErrors] = useState({});
 
     const changeHandler = (e) => {
+        let value = "";
+
+        switch (e.target.type) {
+            case "number":
+                value = Number(e.target.value);
+                break;
+            default:
+                value = e.target.value;
+                break;
+        }
+
         setFormValues((state) => ({
             ...state,
-            [e.target.name]: e.target.value,
+            [e.target.name]: value,
         }));
     };
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
+        setErrors({});
     };
 
     const submitHandler = (e) => {
@@ -41,6 +54,19 @@ export default function ProductCreate() {
         }
 
         resetFormHandler();
+    };
+
+    const priceValidator = () => {
+        if (formValues.price < 0) {
+            setErrors((state) => ({
+                ...state,
+                price: "Price should be a positive number!",
+            }));
+        } else {
+            if (errors.price) {
+                setErrors((state) => ({ ...state, price: "" }));
+            }
+        }
     };
 
     return (
@@ -119,14 +145,19 @@ export default function ProductCreate() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="price">Price</label>
+                        <label htmlFor="price">Price (USD)</label>
                         <input
-                            type="text"
+                            type="number"
                             name="price"
                             id="price"
                             value={formValues.price}
                             onChange={changeHandler}
+                            onBlur={priceValidator}
+                            className={errors.price && "inputError"}
                         />
+                        {errors.price && (
+                            <p className="errorMessage">{errors.price}</p>
+                        )}
                     </div>
                     <button type="submit">Create Product</button>
                 </form>

@@ -1,9 +1,14 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
 .form > * {
     position: relative;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-2);
+    flex-direction: column;
+    gap: var(--space-1);
 }
 
 .form label {
@@ -19,7 +24,6 @@
 
 .form input {
     width: 100%;
-    margin-bottom: var(--space-4);
     padding: var(--space-3);
     font-family: var(--font-primary);
     font-size: var(--fs-4);
@@ -27,4 +31,20 @@
     color: var(--color-primary);
     background-color: transparent;
     border: 1px solid var(--color-primary);
+}
+
+.form input:focus {
+    outline: 2px solid var(--color-primary);
+}
+
+.form button {
+    margin-right: auto;
+}
+
+.form .inputError {
+    border: 1px solid red;
+}
+
+.form .errorMessage {
+    color: var(--color-accent);
 }
