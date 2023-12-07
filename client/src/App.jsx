@@ -8,6 +8,7 @@ import Login from "./components/login/login";
 import Register from "./components/register/Register";
 import ProductCreate from "./components/product-create/ProductCreate";
 import Footer from "./components/footer/Footer";
+import ProductDetails from "./components/product-details/ProductDetails";
 
 function App() {
     const location = useLocation();
@@ -29,6 +30,10 @@ function App() {
                     />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route
+                        path="/products/:productId"
+                        element={<ProductDetails />}
+                    />
                 </Routes>
             </div>
 

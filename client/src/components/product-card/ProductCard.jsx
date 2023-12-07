@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({
+    _id,
     modelName,
     pictureUrl,
     screenSize,
@@ -9,10 +11,9 @@ export default function ProductCard({
     videoCard,
     storage,
     price,
-    _id,
 }) {
     return (
-        <div className={styles.productCard}>
+        <Link to={`/products/${_id}`} className={styles.productCard}>
             <div className={styles.productImage}>
                 <img src={pictureUrl} alt="laptop-image" />
             </div>
@@ -25,6 +26,6 @@ export default function ProductCard({
                 <p>{storage}</p>
             </div>
             <h2 className={styles.price}>${price}</h2>
-        </div>
+        </Link>
     );
 }
