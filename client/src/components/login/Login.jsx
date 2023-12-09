@@ -1,10 +1,15 @@
 import useForm from "../../hooks/useForm";
 import styles from "./Login.module.css";
 
-export default function Login() {
-    const { values, onChange, onSubmit } = useForm({
-        email: "",
-        password: "",
+const LoginFormKyes = {
+    Email: "email",
+    Password: "password",
+};
+
+export default function Login({ loginSubmitHandler }) {
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        [LoginFormKyes.Email]: "",
+        [LoginFormKyes.Password]: "",
     });
 
     return (
