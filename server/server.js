@@ -1339,6 +1339,80 @@
     	}
     };
     var seedData = {
+        products: {
+            "8d3a393e-3df5-4957-9958-95fc7d8b4ad7": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "Dell G5 15",
+                "pictureUrl": "https://m.media-amazon.com/images/I/514qn+bn-GL._AC_.jpg",
+                "screenSize": "15.6\"",
+                "processor": "Intel Core i7-10750H",
+                "videoCard": "NVIDIA GeForce GTX 1660 Ti",
+                "ram": "16 GB",
+                "storage": "SSD 512 GB",
+                "price": "1,499",
+                "_id": "8d3a393e-3df5-4957-9958-95fc7d8b4ad7"
+            },
+            "df96397f-2346-48f0-b291-aa0a6891c26a": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "Acer Predator Helios 300",
+                "pictureUrl": "https://www.notebookcheck.net/uploads/tx_nbc2/1615207-n0_17.jpg",
+                "screenSize": "15.6\"",
+                "processor": "Intel Core i7-10750H",
+                "videoCard": "NVIDIA GeForce RTX 2060",
+                "ram": "16 GB",
+                "storage": "SSD 512 GB",
+                "price": "1,699",
+                "_id": "df96397f-2346-48f0-b291-aa0a6891c26a"
+            },
+            "e3f39609-e272-48d8-8d9a-7491ed34c89c": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "Lenovo Legion 5",
+                "pictureUrl": "https://ardes.bg/uploads/p/lenovo-legion-5-15-gen-6-324107.jpg",
+                "screenSize": "15.6\"",
+                "processor": "AMD Ryzen 7 4800H",
+                "videoCard": "NVIDIA GeForce GTX 1650",
+                "ram": "16 GB",
+                "storage": "SSD 256 GB + HDD 1 TB",
+                "price": "1,299",
+                "_id": "e3f39609-e272-48d8-8d9a-7491ed34c89c"
+            },
+            "f40bd43b-d2c5-45b3-a189-349b615158c9": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "ASUS TUF GAMING A15 FA507RM-HN003",
+                "pictureUrl": "https://c1.neweggimages.com/ProductImageCompressAll300/A8X5S2306200UI57N93.jpg",
+                "screenSize": "15.6\"",
+                "processor": "Intel Core i7-9750H",
+                "videoCard": "NVIDIA GeForce RTX 2070",
+                "ram": "32 GB",
+                "storage": "SSD 1 TB",
+                "price": "2,099",
+                "_id": "f40bd43b-d2c5-45b3-a189-349b615158c9"
+            },
+            "5bd9a9fc-c7bb-40c8-96be-ad420ac4fd72": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "MSI GF63 Thin",
+                "pictureUrl": "https://ardes.bg/uploads/original/msi-gf63-thin-11u-369769.jpg",
+                "screenSize": "15.6\"",
+                "processor": "Intel Core i5-9300H",
+                "videoCard": "NVIDIA GeForce GTX 1650 Max-Q",
+                "ram": "8 GB",
+                "storage": "SSD 256 GB",
+                "price": "899",
+                "_id": "5bd9a9fc-c7bb-40c8-96be-ad420ac4fd72"
+            },
+            "2ee876af-c5a3-42a3-a70f-38d1e47fdce1": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "modelName": "Razer Blade 15",
+                "pictureUrl": "https://assets3.razerzone.com/X_JIbJcZVdafCqHrPaAzvh_qaew=/1500x1000/https%3A%2F%2Fhybrismediaprod.blob.core.windows.net%2Fsys-master-phoenix-images-container%2Fh2d%2Fhe5%2F9392073998366%2Fblade15-ch8-fhd-2-500x500.png",
+                "screenSize": "15.6\"",
+                "processor": "Intel Core i7-10875H",
+                "videoCard": "NVIDIA GeForce RTX 2080 Super Max-Q",
+                "ram": "16 GB",
+                "storage": "SSD 1 TB",
+                "price": "2,599",
+                "_id": "2ee876af-c5a3-42a3-a70f-38d1e47fdce1"
+            }
+        },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
