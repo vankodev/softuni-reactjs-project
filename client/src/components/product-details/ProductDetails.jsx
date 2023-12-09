@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import * as productService from "../../services/productService";
 import * as commentService from "../../services/commentService";
+import AuthContext from "../../contexts/authContext";
 
 export default function ProductDetails() {
     const [product, setProduct] = useState({});
     const [comments, setComments] = useState([]);
-    const [usernameValue, setUsernameValue] = useState("");
+    const { email } = useContext(AuthContext);
     const [commentValue, setCommentValue] = useState("");
     const { productId } = useParams();
 
@@ -21,23 +22,19 @@ export default function ProductDetails() {
 
         const newComment = await commentService.create(
             productId,
-            usernameValue,
             commentValue
         );
 
-        setComments((prevComments) => [...prevComments, newComment]);
+        setComments(state => [...state, { ...newComment, author: { email } }]);
 
-        setUsernameValue("");
         setCommentValue("");
-    };
-
-    const usernameChangeHandler = (e) => {
-        setUsernameValue(e.target.value);
     };
 
     const commentChangeHandler = (e) => {
         setCommentValue(e.target.value);
     };
+
+    console.log(222, comments)
 
     return (
         <div className="ProductDetails">
@@ -51,21 +48,14 @@ export default function ProductDetails() {
             <p>{product.storage}</p>
             <p>{product.price}</p>
             <ul className="comments">
-                {comments.map((comment) => (
-                    <li key={comment._id} className="comment">
-                        <p>{comment.username}</p>
-                        <p>{comment.text}</p>
+                {comments.map(({ _id, text, owner: { email } })  => (
+                    <li key={_id} className="comment">
+                        <p>{email}</p>
+                        <p>{text}</p>
                     </li>
                 ))}
             </ul>
             <form className="form" onSubmit={addCommentHandler}>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="username"
-                    value={usernameValue}
-                    onChange={usernameChangeHandler}
-                />
                 <textarea
                     name="comment"
                     placeholder="Comment......"
