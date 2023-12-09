@@ -1,7 +1,9 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useState } from 'react';
 
+import * as authService from './services/authService';
 import AuthContext from './contexts/authContext';
+import Path from './paths';
 
 import Header from "./components/header/Header";
 import Banner from "./components/header/Banner";
@@ -15,12 +17,19 @@ import ProductDetails from "./components/product-details/ProductDetails";
 
 
 function App() {
-    const [auth, setAuth] = useState({});
+    const navigate = useNavigate();
     const location = useLocation();
     const showBanner = location.pathname !== "/";
+    const [auth, setAuth] = useState({});
 
-    const loginSubmitHandler = (values) => {
-        console.log(values)
+    const loginSubmitHandler = async (values) => {
+        const result = await authService.login(values.email, values.password);
+
+        setAuth(result);
+
+        console.log(result)
+
+        navigate(Path.Home);
     };
 
     return (
