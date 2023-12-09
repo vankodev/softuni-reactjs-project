@@ -14,8 +14,8 @@ export const getOne = async (productId) => {
     return result;
 };
 
-export const create = async (gameData) => {
-    const result = await request.post(baseUrl, gameData);
+export const create = async (productData) => {
+    const result = await request.post(baseUrl, productData);
 
     return result;
 };
