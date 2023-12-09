@@ -10,6 +10,7 @@ import Banner from "./components/header/Banner";
 import Home from "./components/home/Home";
 import ProductList from "./components/product-list/ProductList";
 import Login from "./components/login/Login";
+import Logout from './components/logout/Logout';
 import Register from "./components/register/Register";
 import ProductCreate from "./components/product-create/ProductCreate";
 import Footer from "./components/footer/Footer";
@@ -20,14 +21,18 @@ function App() {
     const navigate = useNavigate();
     const location = useLocation();
     const showBanner = location.pathname !== "/";
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() => {
+        localStorage.removeItem('accessToken');
+
+        return {};
+    });
 
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
 
         setAuth(result);
 
-        console.log(result)
+        localStorage.setItem('accessToken', result.accessToken);
 
         navigate(Path.Home);
     };
@@ -37,17 +42,24 @@ function App() {
         
         setAuth(result);
 
-        console.log(result)
+        localStorage.setItem('accessToken', result.accessToken);
 
         navigate(Path.Home);
     }
 
+    const logoutHandler = () => {
+        setAuth({});
+
+        localStorage.removeItem('accessToken');
+    };
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         username: auth.username,
         email: auth.email,
-        isAuthenticated: !!auth.email,
+        isAuthenticated: !!auth.accessToken,
     }
 
     return (
@@ -65,6 +77,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/products/:productId" element={<ProductDetails />} />
+                        <Route path={Path.Logout} element={<Logout />} />
                     </Routes>
                 </div>
 
