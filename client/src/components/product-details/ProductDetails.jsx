@@ -1,40 +1,48 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useReducer } from "react";
 import { useParams } from "react-router-dom";
 
 import * as productService from "../../services/productService";
 import * as commentService from "../../services/commentService";
 import AuthContext from "../../contexts/authContext";
+import reducer from './commentReducer';
+import useForm from '../../hooks/useForm';
 
 export default function ProductDetails() {
+    const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    const [comments, setComments] = useState([]);
-    const { email } = useContext(AuthContext);
-    const [commentValue, setCommentValue] = useState("");
+    const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
 
     useEffect(() => {
-        productService.getOne(productId).then(setProduct);
-        commentService.getAll(productId).then(setComments);
+        productService.getOne(productId)
+            .then(setProduct);
+
+        commentService.getAll(productId)
+            .then((result) => {
+                dispatch({
+                    type: 'GET_ALL_COMMENTS',
+                    payload: result,
+                });
+            })
     }, [productId]);
 
-    const addCommentHandler = async (e) => {
-        e.preventDefault();
-
+    const addCommentHandler = async (values) => {
         const newComment = await commentService.create(
             productId,
-            commentValue
+            values.comment
         );
 
-        setComments(state => [...state, { ...newComment, author: { email } }]);
+        newComment.owner = { email };
 
-        setCommentValue("");
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: newComment
+        })
     };
 
-    const commentChangeHandler = (e) => {
-        setCommentValue(e.target.value);
-    };
-
-    console.log(222, comments)
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+        comment: '',
+    });
 
     return (
         <div className="ProductDetails">
@@ -55,12 +63,12 @@ export default function ProductDetails() {
                     </li>
                 ))}
             </ul>
-            <form className="form" onSubmit={addCommentHandler}>
+            <form className="form" onSubmit={onSubmit}>
                 <textarea
                     name="comment"
                     placeholder="Comment......"
-                    value={commentValue}
-                    onChange={commentChangeHandler}
+                    value={values.comment}
+                    onChange={onChange}
                 ></textarea>
                 <input
                     className="btn submit"
