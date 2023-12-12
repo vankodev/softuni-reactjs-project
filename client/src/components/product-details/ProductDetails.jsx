@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import * as productService from "../../services/productService";
 import * as commentService from "../../services/commentService";
 import AuthContext from "../../contexts/authContext";
-import reducer from './commentReducer';
-import useForm from '../../hooks/useForm';
+import reducer from "./commentReducer";
+import useForm from "../../hooks/useForm";
+
+import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
-    const { email, userId } = useContext(AuthContext);
+    const { email } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
@@ -19,11 +21,11 @@ export default function ProductDetails() {
 
         commentService.getAll(productId)
             .then((result) => {
-                dispatch({
-                    type: 'GET_ALL_COMMENTS',
-                    payload: result,
-                });
-            })
+            dispatch({
+                type: "GET_ALL_COMMENTS",
+                payload: result,
+            });
+        });
     }, [productId]);
 
     const addCommentHandler = async (values) => {
@@ -35,47 +37,54 @@ export default function ProductDetails() {
         newComment.owner = { email };
 
         dispatch({
-            type: 'ADD_COMMENT',
-            payload: newComment
-        })
+            type: "ADD_COMMENT",
+            payload: newComment,
+        });
     };
 
     const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: '',
+        comment: "",
     });
 
     return (
-        <div className="ProductDetails">
-            <h1>Product Details</h1>
-            <h2>{product.modelName}</h2>
-            <img src={product.pictureUrl} alt="laptop-image" />
-            <p>{product.screenSize}</p>
-            <p>{product.processor}</p>
-            <p>{product.videoCard}</p>
-            <p>{product.ram}</p>
-            <p>{product.storage}</p>
-            <p>{product.price}</p>
-            <ul className="comments">
-                {comments.map(({ _id, text, owner: { email } })  => (
-                    <li key={_id} className="comment">
-                        <p>{email}</p>
-                        <p>{text}</p>
-                    </li>
-                ))}
-            </ul>
-            <form className="form" onSubmit={onSubmit}>
-                <textarea
-                    name="comment"
-                    placeholder="Comment......"
-                    value={values.comment}
-                    onChange={onChange}
-                ></textarea>
-                <input
-                    className="btn submit"
-                    type="submit"
-                    value="Add Comment"
-                />
-            </form>
+        <div className="container">
+            <div className={styles.productDetails}>
+                <h1 className={styles.header}>Product Details</h1>
+                <div className={styles.specs}>
+                    <div className={styles.specsImage}>
+                        <img src={product.pictureUrl} alt="laptop-image" />
+                    </div>
+                    <div className={styles.specsContent}>
+                        <h2 className={styles.specsName}>{product.modelName}</h2>
+                        <p>{product.screenSize}</p>
+                        <p>{product.processor}</p>
+                        <p>{product.videoCard}</p>
+                        <p>{product.ram}</p>
+                        <p>{product.storage}</p>
+                        <p>{product.price}</p>
+                    </div>
+                </div>
+                <div className={styles.comments}>
+                    <h2>Comments</h2>
+                    <ul>
+                        {comments.map(({ _id, text, owner: { email } }) => (
+                            <li key={_id} className="comment">
+                                <p>{email}</p>
+                                <p>{text}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <form className="form" onSubmit={onSubmit}>
+                    <textarea
+                        name="comment"
+                        placeholder="Comment......"
+                        value={values.comment}
+                        onChange={onChange}
+                    ></textarea>
+                    <button>Add Comment</button>
+                </form>
+            </div>
         </div>
     );
 }
