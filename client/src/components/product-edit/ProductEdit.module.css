@@ -1,0 +1,8 @@
+.productEdit {
+    position: relative;
+    max-width: 800px;
+}
+
+.productEdit .header {
+    margin-bottom: var(--space-6);
+}

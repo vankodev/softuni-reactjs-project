@@ -1349,7 +1349,7 @@
                 "videoCard": "NVIDIA GeForce GTX 1660 Ti",
                 "ram": "16 GB",
                 "storage": "SSD 512 GB",
-                "price": "1,499",
+                "price": 1499,
                 "_id": "8d3a393e-3df5-4957-9958-95fc7d8b4ad7"
             },
             "df96397f-2346-48f0-b291-aa0a6891c26a": {
@@ -1361,7 +1361,7 @@
                 "videoCard": "NVIDIA GeForce RTX 2060",
                 "ram": "16 GB",
                 "storage": "SSD 512 GB",
-                "price": "1,699",
+                "price": 1699,
                 "_id": "df96397f-2346-48f0-b291-aa0a6891c26a"
             },
             "e3f39609-e272-48d8-8d9a-7491ed34c89c": {
@@ -1373,7 +1373,7 @@
                 "videoCard": "NVIDIA GeForce GTX 1650",
                 "ram": "16 GB",
                 "storage": "SSD 256 GB + HDD 1 TB",
-                "price": "1,299",
+                "price": 1299,
                 "_id": "e3f39609-e272-48d8-8d9a-7491ed34c89c"
             },
             "f40bd43b-d2c5-45b3-a189-349b615158c9": {
@@ -1385,7 +1385,7 @@
                 "videoCard": "NVIDIA GeForce RTX 2070",
                 "ram": "32 GB",
                 "storage": "SSD 1 TB",
-                "price": "2,099",
+                "price": 2099,
                 "_id": "f40bd43b-d2c5-45b3-a189-349b615158c9"
             },
             "5bd9a9fc-c7bb-40c8-96be-ad420ac4fd72": {
@@ -1397,7 +1397,7 @@
                 "videoCard": "NVIDIA GeForce GTX 1650 Max-Q",
                 "ram": "8 GB",
                 "storage": "SSD 256 GB",
-                "price": "899",
+                "price": 899,
                 "_id": "5bd9a9fc-c7bb-40c8-96be-ad420ac4fd72"
             },
             "2ee876af-c5a3-42a3-a70f-38d1e47fdce1": {
@@ -1409,7 +1409,7 @@
                 "videoCard": "NVIDIA GeForce RTX 2080 Super Max-Q",
                 "ram": "16 GB",
                 "storage": "SSD 1 TB",
-                "price": "2,599",
+                "price": 2599,
                 "_id": "2ee876af-c5a3-42a3-a70f-38d1e47fdce1"
             }
         },

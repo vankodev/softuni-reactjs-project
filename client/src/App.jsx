@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import { AuthProvider } from './contexts/authContext';
-import Path from './paths';
 
 import Header from "./components/header/Header";
 import Banner from "./components/header/Banner";
@@ -11,6 +10,7 @@ import Login from "./components/login/Login";
 import Logout from './components/logout/Logout';
 import Register from "./components/register/Register";
 import ProductCreate from "./components/product-create/ProductCreate";
+import ProductEdit from "./components/product-edit/ProductEdit";
 import Footer from "./components/footer/Footer";
 import ProductDetails from "./components/product-details/ProductDetails";
 
@@ -34,7 +34,9 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/products/:productId" element={<ProductDetails />} />
-                        <Route path={Path.Logout} element={<Logout />} />
+                        <Route path='/logout' element={<Logout />} />
+                        <Route path='/products/:productId/edit' element={<ProductEdit />} />
+                        {/* <Route path='/products/:productId/delete' element={<ProductDelete />} /> */}
                     </Routes>
                 </div>
 

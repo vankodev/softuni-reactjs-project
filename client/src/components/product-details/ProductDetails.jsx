@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import * as productService from "../../services/productService";
 import * as commentService from "../../services/commentService";
@@ -10,6 +10,7 @@ import useForm from "../../hooks/useForm";
 import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
+    const navigate = useNavigate();
     const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
@@ -64,8 +65,14 @@ export default function ProductDetails() {
                         <p>{product.price}</p>
                         {userId === product._ownerId && (
                             <div className={styles.adminControls}>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <button
+                                    type="button"
+                                    onClick={() => navigate(`/products/${productId}/edit`)}
+                                >Edit</button>
+                                <button
+                                    type="button"
+                                    onClick={() => navigate(`/products/${productId}/delete`)}
+                                >Delete</button>
                             </div>
                         )}
                     </div>

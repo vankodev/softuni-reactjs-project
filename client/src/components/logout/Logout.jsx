@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 
 import * as authService from '../../services/authService';
 import { useNavigate } from "react-router-dom";
-import Path from "../../paths";
 import AuthContext from "../../contexts/authContext";
 
 export default function Logout() {
@@ -13,9 +12,9 @@ export default function Logout() {
         authService.logout()
             .then(() => {
                 logoutHandler();
-                navigate(Path.Home);
+                navigate("/");
             })
-            .catch(() => navigate(Path.Home));
+            .catch(() => navigate("/"));
     }, []);
 
     return null;
