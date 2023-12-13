@@ -10,7 +10,7 @@ import useForm from "../../hooks/useForm";
 import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
-    const { email } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
@@ -62,6 +62,12 @@ export default function ProductDetails() {
                         <p>{product.ram}</p>
                         <p>{product.storage}</p>
                         <p>{product.price}</p>
+                        {userId === product._ownerId && (
+                            <div className={styles.adminControls}>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className={styles.comments}>

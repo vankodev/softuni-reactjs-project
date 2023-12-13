@@ -10,8 +10,6 @@ export const getAll = async (productId) => {
 
     const result = await request.get(`${baseUrl}?${query}`);
 
-    console.log(111, result)
-
     return result;
 };
 
