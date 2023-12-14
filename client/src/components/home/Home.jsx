@@ -1,15 +1,20 @@
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext";
+
 import CTA from "./CTA";
-import FeturedProducts from "./FeaturedProducts";
+import FeaturedProducts from "./FeaturedProducts";
 import Hero from "./Hero";
 
 export default function Home() {
+    const { isAuthenticated } = useContext(AuthContext);
+
     return (
         <div className="home">
             <Hero />
 
-            <FeturedProducts />
+            <FeaturedProducts />
 
-            <CTA />
+            {!isAuthenticated && <CTA />}
         </div>
     );
 }

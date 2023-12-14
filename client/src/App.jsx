@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from './contexts/authContext';
 import AuthGuard from './components/guards/AuthGuard';
 import AdminGuard from './components/guards/AdminGuard';
+import AuthRedirectGuard from './components/guards/AuthRedirectGuard';
 
 import Header from "./components/header/Header";
 import Banner from "./components/header/Banner";
@@ -32,9 +33,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/products" element={<ProductList />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
                         <Route path="/products/:productId" element={<ProductDetails />} />
+                        <Route element={<AuthRedirectGuard />}>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
                         <Route element={<AuthGuard />}>
                             <Route path='/products/:productId/edit' element={<ProductEdit />} />
                             {/* <Route path='/products/:productId/delete' element={<ProductDelete />} /> */}

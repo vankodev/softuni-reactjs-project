@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 import styles from "./CTA.module.css";
 
 export default function CTA() {
+    const navigate = useNavigate();
+    
     return (
         <div className={styles.cta}>
             <div className="container">
@@ -8,7 +12,7 @@ export default function CTA() {
                     <h2>
                         Join our community to get the latest updates and offers!
                     </h2>
-                    <button>Sign Up</button>
+                    <button onClick={() => navigate(`/register`)}>Sign Up</button>
                 </div>
             </div>
         </div>
