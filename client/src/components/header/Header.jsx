@@ -7,7 +7,7 @@ export default function Header() {
     const location = useLocation();
     const isActive = (path) => location.pathname === path;
 
-    const { isAuthenticated, username } = useContext(AuthContext);
+    const { isAuthenticated, isAdmin,  username } = useContext(AuthContext);
 
     return (
         <div className={styles.header}>
@@ -25,8 +25,8 @@ export default function Header() {
                         Products
                     </Link>
                 </li>
-                {isAuthenticated && (
-                    <>
+
+                {isAuthenticated && isAdmin && (
                         <li>
                             <Link
                                 to="/products/create"
@@ -37,6 +37,9 @@ export default function Header() {
                                 Create Product
                             </Link>
                         </li>
+                )}
+                {isAuthenticated && (
+                    <>
                         <li>
                             <Link
                                 to="/logout"

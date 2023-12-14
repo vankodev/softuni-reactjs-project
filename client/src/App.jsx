@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import { AuthProvider } from './contexts/authContext';
 import AuthGuard from './components/guards/AuthGuard';
+import AdminGuard from './components/guards/AdminGuard';
 
 import Header from "./components/header/Header";
 import Banner from "./components/header/Banner";
@@ -35,10 +36,12 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/products/:productId" element={<ProductDetails />} />
                         <Route element={<AuthGuard />}>
-                            <Route path="/products/create" element={<ProductCreate />} />
                             <Route path='/products/:productId/edit' element={<ProductEdit />} />
                             {/* <Route path='/products/:productId/delete' element={<ProductDelete />} /> */}
                             <Route path='/logout' element={<Logout />} />
+                        </Route>
+                        <Route element={<AdminGuard />}>
+                            <Route path="/products/create" element={<ProductCreate />} />
                         </Route>
                     </Routes>
                 </div>
