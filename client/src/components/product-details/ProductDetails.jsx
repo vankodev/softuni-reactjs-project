@@ -62,7 +62,7 @@ export default function ProductDetails() {
                         <p>{product.videoCard}</p>
                         <p>{product.ram}</p>
                         <p>{product.storage}</p>
-                        <p>{product.price}</p>
+                        <p>${product.price}</p>
                         {userId === product._ownerId && (
                             <div className={styles.adminControls}>
                                 <button
