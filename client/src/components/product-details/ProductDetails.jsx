@@ -43,6 +43,16 @@ export default function ProductDetails() {
         });
     };
 
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to product ${product.title}`);
+
+        if (hasConfirmed) {
+            await productService.remove(productId);
+
+            navigate('/products');
+        }
+    }
+
     const { values, onChange, onSubmit } = useForm(addCommentHandler, {
         comment: "",
     });
@@ -71,7 +81,7 @@ export default function ProductDetails() {
                                 >Edit</button>
                                 <button
                                     type="button"
-                                    onClick={() => navigate(`/products/${productId}/delete`)}
+                                    onClick={deleteButtonClickHandler}
                                 >Delete</button>
                             </div>
                         )}
