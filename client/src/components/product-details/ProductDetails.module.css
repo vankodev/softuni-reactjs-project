@@ -1,3 +1,14 @@
+.productDetails form a {
+    color: var(--color-primary);
+}
+.productDetails form a:hover {
+    color: red;
+}
+
+.productDetails form p {
+    display: inline-block;
+}
+
 .header {
     margin-bottom: var(--space-6);
 }

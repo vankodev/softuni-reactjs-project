@@ -16,24 +16,24 @@
     gap: var(--space-4);
 }
 
-a {
+.header a {
     color: var(--color-primary);
     text-decoration: none;
 }
 
-a:hover {
+.header a:hover {
     color: red;
 }
 
-.active {
+.header .active {
     text-decoration: underline;
 }
 
-.logo {
+.header .logo {
     font-weight: bold;
     text-decoration: none;
 }
 
-.logo:hover {
+.header .logo:hover {
     color: var(--color-primary);
 }

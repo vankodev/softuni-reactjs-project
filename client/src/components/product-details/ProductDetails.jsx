@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useReducer } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import * as productService from "../../services/productService";
 import * as commentService from "../../services/commentService";
@@ -11,7 +11,7 @@ import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { isAuthenticated, email, userId } = useContext(AuthContext);
+    const { isAuthenticated, username, email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
@@ -35,12 +35,14 @@ export default function ProductDetails() {
             values.comment
         );
 
-        newComment.owner = { email };
+        newComment.owner = { username, email };
 
         dispatch({
             type: "ADD_COMMENT",
             payload: newComment,
         });
+
+        values.comment = "";
     };
 
     const deleteButtonClickHandler = async () => {
@@ -89,24 +91,32 @@ export default function ProductDetails() {
                 </div>
                 <div className={styles.comments}>
                     <h2>Comments</h2>
+                    {comments.length === 0 && <p>No one has shared their opinion about this laptop yet.</p>}
                     <ul>
-                        {comments.map(({ _id, text, owner: { email } }) => (
+                        {comments.map(({ _id, text, owner: { username } }) => (
                             <li key={_id} className="comment">
-                                <p>{email}</p>
+                                <p>{username}</p>
                                 <p>{text}</p>
                             </li>
                         ))}
                     </ul>
                 </div>
                 <form className="form" onSubmit={onSubmit}>
-                    <textarea
-                        name="comment"
-                        placeholder="Comment......"
-                        value={values.comment}
-                        onChange={onChange}
-                    ></textarea>
-                    {isAuthenticated && <button>Add Comment</button>}
-                    {!isAuthenticated && <button type="button" onClick={() => navigate(`/register`)}>Register to add comment</button>}
+                    {isAuthenticated && (
+                        <>
+                            <textarea
+                                name="comment"
+                                placeholder="Comment......"
+                                value={values.comment}
+                                onChange={onChange}
+                            ></textarea>
+                            <button>Add Comment</button>
+                        </>
+                    )}
+                    {!isAuthenticated && (
+                        <p><Link to="/login">Login</Link> or <Link to="/register">Register</Link> to add new comment!</p>
+                    )}
+
                 </form>
             </div>
         </div>
