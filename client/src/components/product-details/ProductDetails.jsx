@@ -11,7 +11,7 @@ import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { email, userId } = useContext(AuthContext);
+    const { isAuthenticated, email, userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
@@ -95,7 +95,8 @@ export default function ProductDetails() {
                         value={values.comment}
                         onChange={onChange}
                     ></textarea>
-                    <button>Add Comment</button>
+                    {isAuthenticated && <button>Add Comment</button>}
+                    {!isAuthenticated && <button type="button" onClick={() => navigate(`/register`)}>Register to add comment</button>}
                 </form>
             </div>
         </div>

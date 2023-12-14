@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
 export default function ProductCard({
@@ -12,8 +12,13 @@ export default function ProductCard({
     storage,
     price,
 }) {
+    const navigate = useNavigate();
+
     return (
-        <Link to={`/products/${_id}`} className={styles.productCard}>
+        <div
+            className={styles.productCard}
+            onClick={() => navigate(`/products/${_id}`)}
+        >
             <div className={styles.productImage}>
                 <img src={pictureUrl} alt="laptop-image" />
             </div>
@@ -26,6 +31,6 @@ export default function ProductCard({
                 <p>{storage}</p>
             </div>
             <h2 className={styles.price}>${price}</h2>
-        </Link>
+        </div>
     );
 }
