@@ -6,6 +6,7 @@ import * as commentService from "../../services/commentService";
 import AuthContext from "../../contexts/authContext";
 import reducer from "./commentReducer";
 import useForm from "../../hooks/useForm";
+import Modal from "../modal/Modal"
 
 import styles from "./ProductDetails.module.css";
 
@@ -15,6 +16,7 @@ export default function ProductDetails() {
     const [product, setProduct] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         productService.getOne(productId)
@@ -46,13 +48,9 @@ export default function ProductDetails() {
     };
 
     const deleteButtonClickHandler = async () => {
-        const hasConfirmed = confirm(`Are you sure you want to product ${product.title}`);
+        await productService.remove(productId);
 
-        if (hasConfirmed) {
-            await productService.remove(productId);
-
-            navigate('/products');
-        }
+        navigate('/products');
     }
 
     const { values, onChange, onSubmit } = useForm(addCommentHandler, {
@@ -61,6 +59,16 @@ export default function ProductDetails() {
 
     return (
         <div className="container">
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
+                <div className={styles.deleteModal}>
+                    <h2>Confirm Deletion</h2>
+                    <div className={styles.modalButtons}>
+                        <button onClick={() => setShowModal(false)}>Cancel</button>
+                        <button onClick={deleteButtonClickHandler}>Delete</button>
+                    </div>
+                </div>
+            </Modal>
+
             <div className={styles.productDetails}>
                 <h1 className={styles.header}>Product Details</h1>
                 <div className={styles.specs}>
@@ -83,7 +91,7 @@ export default function ProductDetails() {
                                 >Edit</button>
                                 <button
                                     type="button"
-                                    onClick={deleteButtonClickHandler}
+                                    onClick={() => setShowModal(true)}
                                 >Delete</button>
                             </div>
                         )}

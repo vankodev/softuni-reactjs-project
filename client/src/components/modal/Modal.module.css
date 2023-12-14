@@ -1,0 +1,35 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modalContent {
+    border: 2px solid var(--color-primary);
+    padding: var(--space-6);
+    position: fixed;
+    background: var(--color-secondary);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .close {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    color: var(--color-primary);
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: var(--color-gray-dark);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

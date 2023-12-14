@@ -86,3 +86,14 @@
     color: black;
     border-color: black;
 }
+
+.deleteModal h2 {
+    white-space: nowrap;
+    margin-bottom: var(--space-4);
+}
+
+.deleteModal .modalButtons {
+    display: flex;
+    gap: var(--space-4);
+
+}
