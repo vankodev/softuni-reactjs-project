@@ -1,61 +1,31 @@
-import { useEffect, useState, useContext, useReducer } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-
+import { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import * as productService from "../../services/productService";
-import * as commentService from "../../services/commentService";
 import AuthContext from "../../contexts/authContext";
-import reducer from "./commentReducer";
-import useForm from "../../hooks/useForm";
+
+
 import Modal from "../modal/Modal"
+import Comment from "../comment/Comment"
 
 import styles from "./ProductDetails.module.css";
 
 export default function ProductDetails() {
     const navigate = useNavigate();
-    const { isAuthenticated, username, email, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const [product, setProduct] = useState({});
-    const [comments, dispatch] = useReducer(reducer, []);
     const { productId } = useParams();
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         productService.getOne(productId)
             .then(setProduct);
-
-        commentService.getAll(productId)
-            .then((result) => {
-            dispatch({
-                type: "GET_ALL_COMMENTS",
-                payload: result,
-            });
-        });
     }, [productId]);
-
-    const addCommentHandler = async (values) => {
-        const newComment = await commentService.create(
-            productId,
-            values.comment
-        );
-
-        newComment.owner = { username, email };
-
-        dispatch({
-            type: "ADD_COMMENT",
-            payload: newComment,
-        });
-
-        values.comment = "";
-    };
 
     const deleteButtonClickHandler = async () => {
         await productService.remove(productId);
 
         navigate('/products');
     }
-
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, {
-        comment: "",
-    });
 
     return (
         <div className="container">
@@ -97,35 +67,8 @@ export default function ProductDetails() {
                         )}
                     </div>
                 </div>
-                <div className={styles.comments}>
-                    <h2>Comments</h2>
-                    {comments.length === 0 && <p>No one has shared their opinion about this laptop yet.</p>}
-                    <ul>
-                        {comments.map(({ _id, text, owner: { username } }) => (
-                            <li key={_id} className="comment">
-                                <p>{username}</p>
-                                <p>{text}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <form className="form" onSubmit={onSubmit}>
-                    {isAuthenticated && (
-                        <>
-                            <textarea
-                                name="comment"
-                                placeholder="Comment......"
-                                value={values.comment}
-                                onChange={onChange}
-                            ></textarea>
-                            <button>Add Comment</button>
-                        </>
-                    )}
-                    {!isAuthenticated && (
-                        <p><Link to="/login">Login</Link> or <Link to="/register">Register</Link> to add new comment!</p>
-                    )}
 
-                </form>
+                <Comment />
             </div>
         </div>
     );
