@@ -1,0 +1,7 @@
+.profile {
+    width: 500px;
+}
+
+.profile h2 {
+    margin-bottom: var(--space-4);
+}

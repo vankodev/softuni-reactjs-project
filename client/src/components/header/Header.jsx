@@ -1,16 +1,25 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../../contexts/authContext";
+
+import Modal from "../modal/Modal"
+import Profile from "../profile/Profile"
+
 import styles from "./Header.module.css";
 
 export default function Header() {
     const location = useLocation();
     const isActive = (path) => location.pathname === path;
+    const [showModal, setShowModal] = useState(false);
 
     const { isAuthenticated, isAdmin,  username } = useContext(AuthContext);
 
     return (
         <div className={styles.header}>
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
+                <Profile />
+            </Modal>
+
             <h2>
                 <Link to="/" className={styles.logo}>
                     GamingLaptops
@@ -48,7 +57,10 @@ export default function Header() {
                                 Logout
                             </Link>
                         </li>
-                        <li>{username}</li>
+                        <li
+                            className={styles.username}
+                            onClick={() => setShowModal(true)}
+                        >{username}</li>
                     </>
                 )}
                 {!isAuthenticated && (
