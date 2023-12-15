@@ -6,6 +6,8 @@ const reducer = (state, action) => {
             return [...state, action.payload];
         case 'EDIT_COMMENT':
             return state.map(c => c._id === action.payload._id ? { ...c, text: action.payload.text } : c)
+        case 'DELETE_COMMENT':
+            return state.filter(comment => comment._id !== action.payload.commentId);
         default:
             return state;
     }

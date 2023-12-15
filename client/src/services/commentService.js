@@ -29,3 +29,6 @@ export const edit = async (commentId, productId, text) => {
 
     return comment;
 };
+
+export const remove = async (commentId) => request.remove(`${baseUrl}/${commentId}`);
+    

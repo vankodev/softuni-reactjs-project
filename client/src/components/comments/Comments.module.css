@@ -49,6 +49,7 @@
     width: 400px;
 }
 
-.editComment button {
-    margin-right: auto;
+.editCommentButtons {
+    display: flex;
+    gap: var(--space-4);
 }
