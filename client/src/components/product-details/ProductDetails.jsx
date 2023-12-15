@@ -5,7 +5,7 @@ import AuthContext from "../../contexts/authContext";
 
 
 import Modal from "../modal/Modal"
-import Comment from "../comment/Comment"
+import Comments from "../comments/Comments"
 
 import styles from "./ProductDetails.module.css";
 
@@ -68,7 +68,7 @@ export default function ProductDetails() {
                     </div>
                 </div>
 
-                <Comment />
+                <Comments />
             </div>
         </div>
     );

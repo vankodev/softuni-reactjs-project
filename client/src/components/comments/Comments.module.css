@@ -27,3 +27,28 @@
 .comments ul li :nth-child(2) {
     flex: 1 1 67%;
 }
+
+.comment .button {
+    cursor: pointer;
+    text-decoration: underline;
+    visibility: hidden;
+}
+
+.comment .buttonVisible {
+    visibility: visible;
+}
+
+.editComment {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.editComment textarea {
+    height: 100px;
+    width: 400px;
+}
+
+.editComment button {
+    margin-right: auto;
+}

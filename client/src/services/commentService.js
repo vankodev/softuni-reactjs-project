@@ -21,3 +21,11 @@ export const create = async (productId, text) => {
 
     return newComment;
 };
+
+
+export const edit = async (commentId, productId, text) => {
+    const data = { productId, text };
+    const comment = await request.put(`${baseUrl}/${commentId}`, data);
+
+    return comment;
+};
