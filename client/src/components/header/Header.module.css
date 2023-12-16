@@ -22,7 +22,7 @@
 }
 
 .header a:hover {
-    color: red;
+    color: var(--color-accent)
 }
 
 .header .active {
@@ -43,5 +43,5 @@
 }
 
 .header .username:hover {
-    color: red;
+    color: var(--color-accent)
 }

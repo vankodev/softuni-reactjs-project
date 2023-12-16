@@ -17,7 +17,7 @@
     /* Colors */
     --color-primary: white;
     --color-secondary: #030303;
-    --color-accent: #a4161a;
+    --color-accent: #d31d23;
     --color-gray-light: #d3d3d3;
     --color-gray-dark: #708090;
 
@@ -67,7 +67,6 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-4);
-    /* border: 1px solid red; */
 }
 
 .content {
@@ -128,4 +127,9 @@ button:hover {
 
 button:active {
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.error {
+    color: var(--color-accent);
+    font-size: var(--fs-5);
 }

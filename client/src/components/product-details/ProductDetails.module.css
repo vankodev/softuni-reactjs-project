@@ -2,7 +2,7 @@
     color: var(--color-primary);
 }
 .productDetails form a:hover {
-    color: red;
+    color: var(--color-accent)
 }
 
 .productDetails form p {
