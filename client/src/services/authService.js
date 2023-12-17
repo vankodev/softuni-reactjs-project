@@ -14,10 +14,17 @@ export const login = async (email, password) => {
     }
 };
 
-export const register = (email, password, username) => request.post(`${baseUrl}/register`, {
-    email,
-    password,
-    username
-});
+export const register = async (email, password, username) => {
+    try {
+        const result = await request.post(`${baseUrl}/register`, {
+            email,
+            password,
+            username
+        });
+        return result;
+    } catch (error) {
+        throw new Error(error.message || 'Registration failed');
+    }
+};
 
 export const logout = () => request.get(`${baseUrl}/logout`);

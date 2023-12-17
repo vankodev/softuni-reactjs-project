@@ -3,14 +3,19 @@ import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
 import styles from "./Login.module.css";
 
+const formInitialState = {
+    email: "",
+    password: "",
+};
+
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
     const [errors, setErrors] = useState({});
 
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        email: "",
-        password: "",
-    });
+    const { values, onChange, onSubmit } = useForm(
+        loginSubmitHandler,
+        formInitialState
+    );
 
     const validateEmail = () => {
         if (!values.email) {
@@ -62,11 +67,9 @@ export default function Login() {
             try {
                 await onSubmit(e);
             } catch (error) {
-                setErrors({ ...errors, form: error.message })
+                setErrors({ ...errors, form: error.message });
             }
         }
-
-        console.log("Current Errors State:", errors);
     };
 
     return (
@@ -101,9 +104,7 @@ export default function Login() {
                             <p className="error">{errors.password}</p>
                         )}
                     </div>
-                    {errors.form && (
-                        <p className="error">{errors.form}</p>
-                    )}
+                    {errors.form && <p className="error">{errors.form}</p>}
                     <button type="submit">Login</button>
                 </form>
             </div>

@@ -4,9 +4,22 @@ export default function useForm(submitHandler, initialValues) {
     const [values, setValues] = useState(initialValues);
 
     const onChange = (e) => {
+        const { name, value } = e.target;
+        
+        let newValue = "";
+
+        switch (e.target.type) {
+            case "number":
+                newValue = Number(value);
+                break;
+            default:
+                newValue = value;
+                break;
+        }
+
         setValues((state) => ({
             ...state,
-            [e.target.name]: e.target.value,
+            [name]: newValue,
         }));
     };
 

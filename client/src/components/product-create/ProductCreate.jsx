@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+
 import * as productService from "../../services/productService";
+
 import styles from "./ProductCreate.module.css";
 
 const formInitialState = {
@@ -16,73 +19,70 @@ const formInitialState = {
 
 export default function ProductCreate() {
     const navigate = useNavigate();
-    const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
-    const changeHandler = (e) => {
-        let value = "";
+    const validateForm = () => {
+        const newErrors = {};
 
-        switch (e.target.type) {
-            case "number":
-                value = Number(e.target.value);
-                break;
-            default:
-                value = e.target.value;
-                break;
+        [
+            "modelName",
+            "pictureUrl",
+            "screenSize",
+            "processor",
+            "videoCard",
+            "ram",
+            "storage",
+        ].forEach((field) => {
+            if (!values[field]) {
+                newErrors[field] = "This field is required";
+            }
+        });
+
+        if (!values.price) {
+            newErrors.price = "Price is required";
+        } else if (Number(values.price) <= 0) {
+            newErrors.price = "Price must be a positive number";
         }
 
-        setFormValues((state) => ({
-            ...state,
-            [e.target.name]: value,
-        }));
+        return newErrors;
     };
 
-    const resetFormHandler = () => {
-        setFormValues(formInitialState);
-        setErrors({});
-    };
+    const productSubmitHandler = () => {
+        const formErrors = validateForm();
+        setErrors(formErrors);
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-
-        try {
-            productService.create(formValues);
-
-            navigate("/products");
-        } catch (err) {
-            console.log(err);
-        }
-
-        resetFormHandler();
-    };
-
-    const priceValidator = () => {
-        if (formValues.price < 0) {
-            setErrors((state) => ({
-                ...state,
-                price: "Price should be a positive number!",
-            }));
-        } else {
-            if (errors.price) {
-                setErrors((state) => ({ ...state, price: "" }));
+        if (Object.keys(formErrors).length === 0) {
+            try {
+                productService.create(values);
+                navigate("/products");
+            } catch (error) {
+                setErrors({ form: error.message });
             }
         }
     };
+
+    const { values, onChange, onSubmit } = useForm(
+        productSubmitHandler,
+        formInitialState
+    );
 
     return (
         <div className="container">
             <div className={styles.productCreate}>
                 <h1 className={styles.header}>Create Product</h1>
-                <form className="form" onSubmit={submitHandler}>
+                <form className="form" onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="modelName">Model Name</label>
                         <input
                             type="text"
                             name="modelName"
                             id="modelName"
-                            value={formValues.modelName}
-                            onChange={changeHandler}
+                            value={values.modelName}
+                            onChange={onChange}
                         />
+                        {errors.modelName && (
+                            <p className="error">{errors.modelName}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="pictureUrl">Picture URL</label>
@@ -90,9 +90,12 @@ export default function ProductCreate() {
                             type="text"
                             name="pictureUrl"
                             id="pictureUrl"
-                            value={formValues.pictureUrl}
-                            onChange={changeHandler}
+                            value={values.pictureUrl}
+                            onChange={onChange}
                         />
+                        {errors.pictureUrl && (
+                            <p className="error">{errors.pictureUrl}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="screenSize">Screen Size</label>
@@ -100,9 +103,12 @@ export default function ProductCreate() {
                             type="text"
                             name="screenSize"
                             id="screenSize"
-                            value={formValues.screenSize}
-                            onChange={changeHandler}
+                            value={values.screenSize}
+                            onChange={onChange}
                         />
+                        {errors.screenSize && (
+                            <p className="error">{errors.screenSize}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="processor">Processor</label>
@@ -110,9 +116,12 @@ export default function ProductCreate() {
                             type="text"
                             name="processor"
                             id="processor"
-                            value={formValues.processor}
-                            onChange={changeHandler}
+                            value={values.processor}
+                            onChange={onChange}
                         />
+                        {errors.processor && (
+                            <p className="error">{errors.processor}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="videoCard">Video Card</label>
@@ -120,9 +129,12 @@ export default function ProductCreate() {
                             type="text"
                             name="videoCard"
                             id="videoCard"
-                            value={formValues.videoCard}
-                            onChange={changeHandler}
+                            value={values.videoCard}
+                            onChange={onChange}
                         />
+                        {errors.videoCard && (
+                            <p className="error">{errors.videoCard}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="ram">RAM</label>
@@ -130,9 +142,10 @@ export default function ProductCreate() {
                             type="text"
                             name="ram"
                             id="ram"
-                            value={formValues.ram}
-                            onChange={changeHandler}
+                            value={values.ram}
+                            onChange={onChange}
                         />
+                        {errors.ram && <p className="error">{errors.ram}</p>}
                     </div>
                     <div>
                         <label htmlFor="storage">Storage</label>
@@ -140,9 +153,12 @@ export default function ProductCreate() {
                             type="text"
                             name="storage"
                             id="storage"
-                            value={formValues.storage}
-                            onChange={changeHandler}
+                            value={values.storage}
+                            onChange={onChange}
                         />
+                        {errors.storage && (
+                            <p className="error">{errors.storage}</p>
+                        )}
                     </div>
                     <div>
                         <label htmlFor="price">Price (USD)</label>
@@ -150,15 +166,14 @@ export default function ProductCreate() {
                             type="number"
                             name="price"
                             id="price"
-                            value={formValues.price}
-                            onChange={changeHandler}
-                            onBlur={priceValidator}
-                            className={errors.price && "inputError"}
+                            value={values.price}
+                            onChange={onChange}
                         />
                         {errors.price && (
-                            <p className="errorMessage">{errors.price}</p>
+                            <p className="error">{errors.price}</p>
                         )}
                     </div>
+                    {errors.form && <p className="error">{errors.form}</p>}
                     <button type="submit">Create Product</button>
                 </form>
             </div>

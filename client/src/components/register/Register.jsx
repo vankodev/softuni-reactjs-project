@@ -3,16 +3,21 @@ import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
 import styles from "./Register.module.css";
 
+const formInitialState = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+};
+
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
     const [errors, setErrors] = useState({});
 
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
+    const { values, onChange, onSubmit } = useForm(
+        registerSubmitHandler,
+        formInitialState
+    );
 
     const validateUsername = () => {
         if (!values.username) {
@@ -80,17 +85,21 @@ export default function Register() {
         setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formErrors = validateForm();
 
         if (Object.values(formErrors).some((error) => error)) {
             setErrors(formErrors);
         } else {
-            onSubmit(e);
+            try {
+                await onSubmit(e);
+            } catch (error) {
+                setErrors({ ...errors, form: error.message });
+            }
         }
     };
-    
+
     return (
         <div className="container">
             <div className={styles.register}>
@@ -151,6 +160,7 @@ export default function Register() {
                             <p className="error">{errors.confirmPassword}</p>
                         )}
                     </div>
+                    {errors.form && <p className="error">{errors.form}</p>}
                     <button type="submit">Register</button>
                 </form>
             </div>
