@@ -15,6 +15,7 @@ export default function Comments() {
     const { productId } = useParams();
     const [showModal, setShowModal] = useState(false);
     const [editComment, setEditComment] = useState("");
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         commentService
@@ -28,9 +29,16 @@ export default function Comments() {
             .catch((error) => {
                 console.error("Failed to fetch comments:", error);
             });
-    }, [productId]);
+    }, [productId])
 
     const addCommentHandler = async (values) => {
+        if (!values.comment) {
+            setErrors({ comment: "Comment is Required"});
+            return
+        } else {
+            setErrors({ comment: ""});
+        }
+
         try {
             const newComment = await commentService.create(
                 productId,
@@ -61,6 +69,13 @@ export default function Comments() {
     };
 
     const editCommentHandler = async () => {
+        if (!editComment.text) {
+            setErrors({ editComment: "Comment is Required"});
+            return
+        } else {
+            setErrors({ editComment: ""});
+        }
+
         try {
             const editedComment = await commentService.edit(
                 editComment.commentId,
@@ -106,7 +121,7 @@ export default function Comments() {
     return (
         <div className={styles.commentsWrapper}>
             <Modal show={showModal} onClose={() => setShowModal(false)}>
-                <div className={styles.editComment}>
+                <form className={styles.editComment}>
                     <h2>Edit Comment</h2>
                     <textarea
                         name="comment"
@@ -114,11 +129,14 @@ export default function Comments() {
                         value={editComment.text}
                         onChange={onEditChange}
                     ></textarea>
+                    {errors.editComment && (
+                        <p className="error">{errors.editComment}</p>
+                    )}
                     <div className={styles.editCommentButtons}>
-                        <button onClick={editCommentHandler}> Edit Comment </button>
-                        <button onClick={deleteCommentHandler}> Delete Comment </button>
+                        <button type="button" onClick={editCommentHandler}> Edit Comment </button>
+                        <button type="button" onClick={deleteCommentHandler}> Delete Comment </button>
                     </div>
-                </div>
+                </form>
             </Modal>
 
             <div className={styles.comments}>
@@ -157,6 +175,9 @@ export default function Comments() {
                             value={values.comment}
                             onChange={onChange}
                         ></textarea>
+                        {errors.comment && (
+                            <p className="error">{errors.comment}</p>
+                        )}
                         <button>Add Comment</button>
                     </>
                 )}

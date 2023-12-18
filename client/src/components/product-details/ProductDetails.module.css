@@ -42,8 +42,15 @@
     color: var(--color-secondary);
 }
 
-.specsName {
+.specsContent .specsName {
     margin-bottom: var(--space-3);
+}
+
+.specsContent .price {
+    margin-top: var(--space-2);
+    color: var(--color-accent);
+    font-size: var(--fs-3);
+    font-weight: var(--fw-bold);
 }
 
 .adminControls {
