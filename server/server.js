@@ -1343,7 +1343,7 @@
             "8d3a393e-3df5-4957-9958-95fc7d8b4ad7": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "Dell G5 15",
-                "pictureUrl": "https://m.media-amazon.com/images/I/514qn+bn-GL._AC_.jpg",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/Dell%20G5%2015.jpg?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "Intel Core i7-10750H",
                 "videoCard": "NVIDIA GeForce GTX 1660 Ti",
@@ -1355,7 +1355,7 @@
             "df96397f-2346-48f0-b291-aa0a6891c26a": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "Acer Predator Helios 300",
-                "pictureUrl": "https://www.notebookcheck.net/uploads/tx_nbc2/1615207-n0_17.jpg",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/Acer%20Predator%20Helios%20300.jpg?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "Intel Core i7-10750H",
                 "videoCard": "NVIDIA GeForce RTX 2060",
@@ -1367,7 +1367,7 @@
             "e3f39609-e272-48d8-8d9a-7491ed34c89c": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "Lenovo Legion 5",
-                "pictureUrl": "https://ardes.bg/uploads/p/lenovo-legion-5-15-gen-6-324107.jpg",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/Lenovo%20Legion%205.jpg?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "AMD Ryzen 7 4800H",
                 "videoCard": "NVIDIA GeForce GTX 1650",
@@ -1379,7 +1379,7 @@
             "f40bd43b-d2c5-45b3-a189-349b615158c9": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "ASUS TUF GAMING A15 FA507RM-HN003",
-                "pictureUrl": "https://c1.neweggimages.com/ProductImageCompressAll300/A8X5S2306200UI57N93.jpg",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/ASUS%20TUF%20GAMING%20A15%20FA507RM-HN003.jpg?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "Intel Core i7-9750H",
                 "videoCard": "NVIDIA GeForce RTX 2070",
@@ -1391,7 +1391,7 @@
             "5bd9a9fc-c7bb-40c8-96be-ad420ac4fd72": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "MSI GF63 Thin",
-                "pictureUrl": "https://ardes.bg/uploads/original/msi-gf63-thin-11u-369769.jpg",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/MSI%20GF63%20Thin.jpg?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "Intel Core i5-9300H",
                 "videoCard": "NVIDIA GeForce GTX 1650 Max-Q",
@@ -1403,7 +1403,7 @@
             "2ee876af-c5a3-42a3-a70f-38d1e47fdce1": {
                 _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                 "modelName": "Razer Blade 15",
-                "pictureUrl": "https://assets3.razerzone.com/X_JIbJcZVdafCqHrPaAzvh_qaew=/1500x1000/https%3A%2F%2Fhybrismediaprod.blob.core.windows.net%2Fsys-master-phoenix-images-container%2Fh2d%2Fhe5%2F9392073998366%2Fblade15-ch8-fhd-2-500x500.png",
+                "pictureUrl": "https://storage.cloud.google.com/laptop_images/Razer%20Blade%2015.png?authuser=1",
                 "screenSize": "15.6\"",
                 "processor": "Intel Core i7-10875H",
                 "videoCard": "NVIDIA GeForce RTX 2080 Super Max-Q",
