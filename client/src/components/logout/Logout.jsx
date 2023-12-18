@@ -14,8 +14,8 @@ export default function Logout() {
                 logoutHandler();
                 navigate("/");
             })
-            .catch(() => navigate("/"));
-    }, []);
+            .catch(() => alert("Logout failed"));
+    });
 
     return null;
 }
