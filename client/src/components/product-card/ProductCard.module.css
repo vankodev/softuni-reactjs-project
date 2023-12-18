@@ -23,7 +23,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../../../public/images/metal-texture.png");
+    background-image: url("/images/metal-texture.png");
     background-size: cover;
     background-position: center;
     z-index: -1;

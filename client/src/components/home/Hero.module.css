@@ -2,7 +2,7 @@
     position: relative;
     height: 80vh;
     background-color: rgb(68, 84, 107);
-    background-image: url("../../../public/images/hero-back2.png");
+    background-image: url("/images/hero-back2.png");
     background-size: cover;
     background-position: center;
 }

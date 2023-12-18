@@ -1,6 +1,6 @@
 .cta {
     height: 200px;
-    background-image: url("../../../public/images/cta-back.png");
+    background-image: url("/images/cta-back.png");
     background-size: cover;
     background-position: center;
 }

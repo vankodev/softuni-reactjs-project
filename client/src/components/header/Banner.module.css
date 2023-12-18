@@ -1,6 +1,6 @@
 .banner {
     height: 200px;
-    background-image: url("../../../public/images/header-banner.png");
+    background-image: url("/images/header-banner.png");
     background-size: cover;
     background-position: center;
 }
