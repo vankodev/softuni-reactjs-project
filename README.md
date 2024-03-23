@@ -1,8 +1,10 @@
-# My Project for SoftUni ReactJS Course
+# Project for SoftUni ReactJS Course
 
 ## Brief Overview
 
 This project is a showcase of my capabilities in React.js, leveraging technologies like Vite, React Hooks, and Context API. It's designed as a full-fledged web application with authentication, CRUD operations, and dynamic routing, offering both public and private user experiences.
+
+[Live Project Demo](https://softuni-reactjs-project-1234.web.app)
 
 ## Application Structure
 
